@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List Your Deals — FrugalRadar for Merchants</title>
+  <meta name="description" content="Reach deal-seekers near your store. List your deals on FrugalRadar and get in front of local shoppers looking to save.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap');
+
+    :root {
+      --deep:       #0D3D2A;
+      --primary:    #1A7A4A;
+      --mint:       #7FEFB8;
+      --mint-pale:  #D4FAE8;
+      --page:       #F3FAF6;
+      --white:      #ffffff;
+      --t1:         #0D2E1C;
+      --t2:         #3A6B50;
+      --t3:         #7AAD8E;
+      --border:     rgba(26,122,74,0.13);
+      --border-s:   rgba(26,122,74,0.26);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--page);
+      color: var(--t1);
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+    /* Nav */
+    nav {
+      background: var(--white);
+      border-bottom: 0.5px solid var(--border-s);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo-icon {
+      width: 32px; height: 32px;
+      background: var(--deep);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .nav-logo-text {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--t1);
+      letter-spacing: -0.3px;
+    }
+    .nav-logo-text span { color: var(--primary); }
+    .nav-cta {
+      background: var(--primary);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .nav-cta:hover { opacity: 0.88; }
+
+    /* Hero */
+    .hero {
+      background: var(--deep);
+      padding: 72px 24px 64px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      border: 1px solid rgba(127,239,184,0.07);
+      right: -100px; top: -100px;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 240px; height: 240px;
+      border-radius: 50%;
+      border: 1px solid rgba(127,239,184,0.1);
+      left: -60px; bottom: -60px;
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+    .hero-eyebrow {
+      display: inline-block;
+      background: rgba(127,239,184,0.15);
+      color: var(--mint);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-size: clamp(28px, 4.5vw, 44px);
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.15;
+      letter-spacing: -0.8px;
+      margin-bottom: 18px;
+    }
+    .hero-title span { color: var(--mint); }
+    .hero-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.5);
+      max-width: 480px;
+      margin: 0 auto 32px;
+      line-height: 1.65;
+    }
+    .hero-btn {
+      display: inline-block;
+      background: var(--mint);
+      color: var(--deep);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 32px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .hero-btn:hover { opacity: 0.88; }
+    .hero-note {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      margin-top: 12px;
+    }
+
+    /* Stats bar */
+    .stats-bar {
+      background: var(--white);
+      border-bottom: 0.5px solid var(--border);
+    }
+    .stats-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .stat-item {
+      text-align: center;
+      padding: 20px 16px;
+    }
+    .stat-val {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+    }
+    .stat-lbl {
+      font-size: 11px;
+      color: var(--t3);
+      margin-top: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .stat-divider {
+      width: 1px;
+      height: 32px;
+      background: var(--border);
+    }
+
+    /* How it works */
+    section { padding: 64px 24px; }
+    .section-label {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--t3);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--t1);
+      letter-spacing: -0.4px;
+      margin-bottom: 8px;
+    }
+    .section-sub {
+      font-size: 15px;
+      color: var(--t2);
+      line-height: 1.65;
+      max-width: 520px;
+      margin-bottom: 40px;
+    }
+
+    .steps { display: flex; flex-direction: column; gap: 20px; }
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: var(--white);
+      border: 0.5px solid var(--border-s);
+      border-radius: 14px;
+      padding: 20px;
+    }
+    .step-num {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: var(--deep);
+      color: var(--mint);
+      font-size: 15px;
+      font-weight: 600;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--t1);
+      margin-bottom: 4px;
+    }
+    .step-desc { font-size: 13px; color: var(--t2); line-height: 1.6; }
+
+    /* Benefits */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .benefit {
+      background: var(--white);
+      border: 0.5px solid var(--border-s);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .benefit-icon { font-size: 24px; margin-bottom: 10px; }
+    .benefit-title { font-size: 14px; font-weight: 600; color: var(--t1); margin-bottom: 5px; }
+    .benefit-desc { font-size: 12px; color: var(--t2); line-height: 1.6; }
+
+    /* CTA section */
+    .cta-card {
+      background: var(--deep);
+      border-radius: 16px;
+      padding: 48px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-card::before {
+      content: '';
+      position: absolute;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      border: 1px solid rgba(127,239,184,0.08);
+      right: -60px; top: -60px;
+    }
+    .cta-card .section-label { color: rgba(127,239,184,0.6); }
+    .cta-card .section-title { color: #fff; margin-bottom: 12px; }
+    .cta-card .section-sub { color: rgba(255,255,255,0.45); margin: 0 auto 28px; }
+    .cta-btn {
+      display: inline-block;
+      background: var(--mint);
+      color: var(--deep);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 36px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .cta-btn:hover { opacity: 0.88; }
+    .cta-note {
+      font-size: 12px;
+      color: rgba(255,255,255,0.25);
+      margin-top: 12px;
+    }
+
+    /* Pricing */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .plan {
+      background: var(--white);
+      border: 0.5px solid var(--border-s);
+      border-radius: 14px;
+      padding: 24px;
+    }
+    .plan.featured {
+      border-color: var(--primary);
+      border-width: 1.5px;
+    }
+    .plan-badge {
+      display: inline-block;
+      background: var(--mint-pale);
+      color: var(--primary);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    .plan-name { font-size: 16px; font-weight: 600; color: var(--t1); margin-bottom: 4px; }
+    .plan-price {
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+    }
+    .plan-price span { font-size: 14px; font-weight: 400; color: var(--t3); }
+    .plan-desc { font-size: 12px; color: var(--t2); margin-bottom: 16px; line-height: 1.6; }
+    .plan-features { list-style: none; }
+    .plan-features li {
+      font-size: 13px;
+      color: var(--t2);
+      padding: 5px 0;
+      border-bottom: 0.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .plan-features li:last-child { border-bottom: none; }
+    .plan-features li::before { content: '✓'; color: var(--primary); font-weight: 600; }
+
+    /* Footer */
+    footer {
+      background: var(--white);
+      border-top: 0.5px solid var(--border);
+      padding: 24px;
+      text-align: center;
+    }
+    .footer-inner { max-width: 720px; margin: 0 auto; }
+    .footer-copy { font-size: 12px; color: var(--t3); }
+    .footer-links { margin-top: 8px; display: flex; justify-content: center; gap: 20px; }
+    .footer-link { font-size: 12px; color: var(--t3); text-decoration: none; }
+    .footer-link:hover { color: var(--primary); }
+
+    @media (max-width: 480px) {
+      .hero { padding: 52px 20px 48px; }
+      section { padding: 48px 20px; }
+      .stats-inner { flex-wrap: wrap; }
+      .cta-card { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <div class="nav-logo-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <circle cx="9" cy="9" r="7" stroke="rgba(127,239,184,0.3)" stroke-width="1"/>
+            <circle cx="9" cy="9" r="4.5" stroke="rgba(127,239,184,0.5)" stroke-width="1"/>
+            <circle cx="9" cy="9" r="2" fill="#7FEFB8"/>
+          </svg>
+        </div>
+        <span class="nav-logo-text">Frugal<span>Radar</span></span>
+      </a>
+      <a href="#list-deal" class="nav-cta">List a Deal</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">For Merchants & Local Businesses</div>
+      <h1 class="hero-title">Reach shoppers<br>looking to <span>save near you</span></h1>
+      <p class="hero-sub">FrugalRadar puts your deals in front of local customers actively searching for savings within 10 miles of your store.</p>
+      <a href="#list-deal" class="hero-btn">List Your Deal Free</a>
+      <p class="hero-note">No account required · Live in minutes</p>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-val">10 mi</div>
+        <div class="stat-lbl">Radius targeting</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-val">1,000+</div>
+        <div class="stat-lbl">Active deals</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-val">Free</div>
+        <div class="stat-lbl">Basic listing</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-val">OKC</div>
+        <div class="stat-lbl">Launch market</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- How it works -->
+  <section>
+    <div class="wrap">
+      <div class="section-label">How it works</div>
+      <h2 class="section-title">Simple to get started</h2>
+      <p class="section-sub">Submit your deal in under 2 minutes. We review and publish it to the FrugalRadar app.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div>
+            <div class="step-title">Submit your deal</div>
+            <div class="step-desc">Fill out our simple form with your deal details — product, price, discount, and expiry. No account needed.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div>
+            <div class="step-title">We review and publish</div>
+            <div class="step-desc">Our team reviews submissions within 24 hours and publishes approved deals to the app.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div>
+            <div class="step-title">Local shoppers find you</div>
+            <div class="step-desc">Your deal appears when customers within 10 miles search for savings. They tap, they come in.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section style="padding-top: 0;">
+    <div class="wrap">
+      <div class="section-label">Why FrugalRadar</div>
+      <h2 class="section-title">Built for local businesses</h2>
+      <p class="section-sub">We focus on proximity — your deals only show to shoppers who are actually near your store.</p>
+
+      <div class="benefits-grid">
+        <div class="benefit">
+          <div class="benefit-icon">📍</div>
+          <div class="benefit-title">Hyper-local reach</div>
+          <div class="benefit-desc">Deals surface only within your 10-mile radius. No wasted impressions.</div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">📊</div>
+          <div class="benefit-title">Performance tracking</div>
+          <div class="benefit-desc">See how many shoppers viewed and clicked your deal. Know what works.</div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">⚡</div>
+          <div class="benefit-title">Live in 24 hours</div>
+          <div class="benefit-desc">Submit today, approved tomorrow. No lengthy onboarding process.</div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">💰</div>
+          <div class="benefit-title">Free to start</div>
+          <div class="benefit-desc">Basic listings are free. Upgrade for featured placement and priority ranking.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section style="padding-top: 0;">
+    <div class="wrap">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Start free, grow with us</h2>
+      <p class="section-sub">No contracts. Cancel anytime.</p>
+
+      <div class="pricing-grid">
+        <div class="plan">
+          <div class="plan-name">Basic</div>
+          <div class="plan-price">$0 <span>/ month</span></div>
+          <div class="plan-desc">Perfect for getting started and reaching local shoppers.</div>
+          <ul class="plan-features">
+            <li>1 active deal listing</li>
+            <li>Standard placement</li>
+            <li>10-mile radius targeting</li>
+            <li>Basic performance data</li>
+          </ul>
+        </div>
+        <div class="plan featured">
+          <div class="plan-badge">Most Popular</div>
+          <div class="plan-name">Featured</div>
+          <div class="plan-price">$99 <span>/ month</span></div>
+          <div class="plan-desc">Get more visibility with priority placement and multiple listings.</div>
+          <ul class="plan-features">
+            <li>Up to 5 active deals</li>
+            <li>Featured Deal placement</li>
+            <li>Priority ranking in search</li>
+            <li>Full click analytics</li>
+            <li>Deal performance reports</li>
+          </ul>
+        </div>
+        <div class="plan">
+          <div class="plan-name">Business</div>
+          <div class="plan-price">$249 <span>/ month</span></div>
+          <div class="plan-desc">For multi-location businesses and brands with ongoing promotions.</div>
+          <ul class="plan-features">
+            <li>Unlimited deal listings</li>
+            <li>Multiple locations</li>
+            <li>Top-of-feed placement</li>
+            <li>Dedicated account manager</li>
+            <li>Custom redemption tracking</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- List Deal CTA -->
+  <section id="list-deal" style="padding-top: 0; padding-bottom: 64px;">
+    <div class="wrap">
+      <div class="cta-card">
+        <div class="section-label">Get started</div>
+        <h2 class="section-title">List your first deal today</h2>
+        <p class="section-sub">Free to submit. Live within 24 hours. Reach local shoppers near your store.</p>
+        <a href="https://tally.so/r/WOo0gJ" target="_blank" class="cta-btn">Submit a Deal →</a>
+        <p class="cta-note">Questions? Email us at abidelabs@proton.me</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-copy">© 2026 FrugalRadar · Built by Abide Labs</div>
+      <div class="footer-links">
+        <a href="/privacy" class="footer-link">Privacy</a>
+        <a href="/support" class="footer-link">Support</a>
+        <a href="https://abide-labs.github.io" class="footer-link">Abide Labs</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
